@@ -4,10 +4,30 @@ eureka:
       defaultZone: http://localhost:8761/eureka/
 server:
   port: 8763
+  
 spring:
   application:
+    #服务名
     name: service-feign
-
+  #MQ配置
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+  #BUS配置
+  cloud:
+    bus:
+      enabled: true
+      trace:
+        enabled: true
+#BUS配置
+management:
+  endpoints:
+    web:
+      exposure:
+        include: bus-refresh
+#断路器配置
 feign:
   hystrix:
     enabled: true
